@@ -2,20 +2,22 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
+  //Configuracion del archivo js, donde se define la entrada y la salida
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "./"),
     filename: "[name][contenthash].js",
   },
-  mode: "production",
+  //Modo del archivo
+  mode: "development",
+  watch: true,
   resolve: {
     extensions: [".js"],
   },
   module: {
+    // Loder de babel
     rules: [
       {
         test: /\.m?js$/,
@@ -24,11 +26,13 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      //Loader para css y sass
       {
         test: /\.css|.sass|.scss$/i,
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
+      //Optimizacion de imagenes
       {
         type: "asset",
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -42,6 +46,7 @@ module.exports = {
       filename: "./index.php",
     }),
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
+    //Mover archivos
     new CopyPlugin({
       patterns: [
         {
@@ -51,9 +56,4 @@ module.exports = {
       ],
     }),
   ],
-  //Optimizacion de css y js con sus hash
-  optimization: {
-    minimize: true,
-    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
-  },
 };
