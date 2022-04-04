@@ -1,2 +1,19 @@
-
-body{color:aqua}
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/style.css ***!
+  \********************************************************************************************************/
+/*
+Theme Name: Plantilla-Wordpress
+Theme URI: https://github.com/josedavid1996/plantilla-wordpress
+Author: Jose David Redondo Perdomo (Programador Frontend)
+Author URI: https://github.com/josedavid1996
+Description: Base de theme para wordpress
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss ***!
+  \**************************************************************************************************************/
+body {
+  background-color: aqua;
+}

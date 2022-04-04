@@ -8,11 +8,11 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "./"),
-    filename: "[name][contenthash].js",
+    filename: "bundle.js",
   },
   //Modo del archivo
   mode: "development",
-  watch: true,
+  // watch: true,
   resolve: {
     extensions: [".js"],
   },
@@ -42,16 +42,20 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./src/index.php",
-      filename: "./index.php",
+      template: "./src/header.php",
+      filename: "./header.php",
     }),
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
+    new MiniCssExtractPlugin({ filename: "style.css" }),
     //Mover archivos
     new CopyPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, "src", "./images"),
           to: "assets/images",
+        },
+        {
+          from: path.resolve(__dirname, "src", "./index.php"),
+          to: "./index.php",
         },
       ],
     }),
