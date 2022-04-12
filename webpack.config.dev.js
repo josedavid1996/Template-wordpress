@@ -7,7 +7,7 @@ module.exports = {
   //Configuracion del archivo js, donde se define la entrada y la salida
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "./"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js",
   },
   //Modo del archivo
@@ -42,8 +42,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./src/header.php",
-      filename: "./header.php",
+      template: "./src/index.php",
+      filename: "./index.php",
     }),
     new MiniCssExtractPlugin({ filename: "style.css" }),
     //Mover archivos
@@ -51,11 +51,23 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, "src", "./images"),
-          to: "assets/images",
+          to: "../dist/assets/images",
         },
         {
-          from: path.resolve(__dirname, "src", "./index.php"),
-          to: "./index.php",
+          from: path.resolve(__dirname, "src", "./header.php"),
+          to: "../dist/header.php",
+        },
+        {
+          from: path.resolve(__dirname, "src", "./footer.php"),
+          to: "../dist/footer.php",
+        },
+        {
+          from: path.resolve(__dirname, "src", "./functions.php"),
+          to: "../dist/functions.php",
+        },
+        {
+          from: path.resolve(__dirname, "src", "./screenshot.png"),
+          to: "../dist/screenshot.png",
         },
       ],
     }),
