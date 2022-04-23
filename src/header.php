@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php wp_head() ?>
+  <?php wp_head( ) ?>
 </head>
 <body>
+
+<!-- Logo dinamico -->
+  <?php the_custom_logo( );?>
+
+  <!-- Menu dinamico -->
   
+<?php wp_nav_menu( 
+  array(
+    "menu" => "menu-principal"
+  )
+);?>
